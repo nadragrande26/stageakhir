@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 import 'package:myapp/Banking/DepositScreen.dart';
 import 'package:myapp/Banking/WithdrawScreen.dart';
 import 'package:myapp/Controller/HomeController.dart';
+import 'package:myapp/Screen/CameraScreen.dart';
+import 'package:myapp/Screen/MicrophoneScreen.dart';
 import 'package:myapp/Screen/ProfileScreen.dart';
+import 'package:myapp/Screen/SpeakerScreen.dart';
 import 'package:myapp/Screen/UmkmSearchScreen.dart'; 
 import 'newsscreen.dart';
 
@@ -139,6 +142,87 @@ class WelcomeScreen extends StatelessWidget {
                             SizedBox(height: 10),
                             Text(
                               'UMKM',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(CameraScreen());
+                    },
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.camera, size: 50, color: Colors.blue),
+                            SizedBox(height: 10),
+                            Text(
+                              'Camera',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(MicrophoneScreen());
+                    },
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.mic, size: 50, color: Colors.green),
+                            SizedBox(height: 10),
+                            Text(
+                              'Microphone',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(SpeakerScreen());
+                    },
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.volume_up, size: 50, color: Colors.red),
+                            SizedBox(height: 10),
+                            Text(
+                              'Speaker',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
