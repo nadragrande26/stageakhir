@@ -1,0 +1,34 @@
+buildscript {
+    ext.kotlin_version = '1.9.0' 
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.13'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:8.1.1' // Versi AGP
+        
+    }
+
+}
+
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// Konfigurasi direktori build untuk root dan subproyek
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    evaluationDependsOn(":app")
+}
+
+// Task membersihkan direktori build
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
