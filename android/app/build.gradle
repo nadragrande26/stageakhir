@@ -1,0 +1,62 @@
+plugins {
+    id "com.android.application"
+    // Plugin Google Services untuk Firebase
+    id "com.google.gms.google-services" // START: FlutterFire Configuration
+    id "kotlin-android"
+    // Plugin Flutter harus diterapkan setelah plugin Android dan Kotlin.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
+if (flutterVersionCode == null) {
+    flutterVersionCode = "1"
+}
+
+def flutterVersionName = localProperties.getProperty("flutter.versionName")
+if (flutterVersionName == null) {
+    flutterVersionName = "1.0"
+}
+
+android {
+    namespace = "com.example.myapp" // Ganti dengan nama package aplikasi Anda
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    kotlinOptions {
+         jvmTarget = "17"
+    }
+
+    compileOptions {
+       sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    defaultConfig {
+        // Application ID untuk konfigurasi Firebase
+        applicationId "com.example.myapp" // Sesuaikan dengan package aplikasi Anda
+        minSdkVersion 23 // Sesuaikan dengan Firebase SDK yang digunakan
+        targetSdkVersion 33 // Sesuaikan dengan target SDK yang diinginkan
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            // TODO: Tambahkan konfigurasi signing Anda untuk rilis build.
+            // Saat ini menggunakan debug keys agar `flutter run --release` dapat berjalan.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
